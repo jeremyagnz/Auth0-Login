@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark ">
+  <a class="navbar-brand m-2" href="#">Auth</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarText"
+    aria-controls="navbarText"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="public" routerLinkActive="active">
+            Public
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="private" routerLinkActive="active" *ngIf="(auth.isAuthenticated$ | async)">Private</a>
+      </li>
+    </ul>
+    
+  </div>
+  <span *ngIf="auth.user$ | async as user"> <i class="fa fa-user" aria-hidden="true"></i> {{user.given_name}}</span>
+  <button
+        type="button"
+        (click)="login()"
+        class="btn btn-primary btn-lg px-4 gap-3 m-2"
+        *ngIf="!(auth.isAuthenticated$ | async)">
+        Ingresar
+      </button>
+
+      <button
+        type="button"
+        (click)="logout()"
+        class="btn btn-danger btn-lg px-4 gap-3 m-2"
+        *ngIf="(auth.isAuthenticated$ | async)">
+        Salir
+      </button>
+</nav>

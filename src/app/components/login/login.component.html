@@ -1,0 +1,32 @@
+<div class="px-4 py-5 my-5 text-center">
+  <img
+    class="d-block mx-auto mb-4"
+    src="https://fondosmil.com/fondo/41336.jpg"
+    alt=""
+    width="450"
+    height="400"
+  />
+  <h1 class="display-5 fw-bold">Centered hero</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead mb-4">
+      Quickly design and customize responsive mobile-first sites with Bootstrap.
+    </p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <button
+        type="button"
+        (click)="login()"
+        class="btn btn-primary btn-lg px-4 gap-3"
+        *ngIf="!(auth.isAuthenticated$ | async)">
+        Ingresar
+      </button>
+
+      <button
+        type="button"
+        (click)="logout()"
+        class="btn btn-danger btn-lg px-4 gap-3"
+        *ngIf="(auth.isAuthenticated$ | async)">
+        Salir
+      </button>
+    </div>
+  </div>
+</div>
